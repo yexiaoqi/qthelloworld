@@ -11,7 +11,7 @@ qthelloworld::qthelloworld(QWidget *parent) :
 {
 	setWindowTitle(tr("Main Window"));
 
-	openAction = new QAction(QIcon(":/images/doc-open"), tr("&Open..."), this);
+	openAction = new QAction(QIcon(":/images/test"), tr("&Open..."), this);
 	openAction->setShortcuts(QKeySequence::Open);
 	openAction->setStatusTip(tr("Open an existing file"));
 	connect(openAction, &QAction::triggered, this, &qthelloworld::open);
