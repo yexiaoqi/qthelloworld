@@ -1,15 +1,18 @@
 #pragma once
 
+#include <QMainWindow>
 #include <QtWidgets/QWidget>
 #include "ui_qthelloworld.h"
 
-class qthelloworld : public QWidget
+class qthelloworld : public QMainWindow
 {
 	Q_OBJECT
-
 public:
-	qthelloworld(QWidget *parent = Q_NULLPTR);
+	qthelloworld(QWidget *parent = 0);
+	~qthelloworld();
 
 private:
-	Ui::qthelloworldClass ui;
+	void open();
+
+	QAction *openAction;
 };
