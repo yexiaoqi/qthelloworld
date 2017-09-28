@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QStatusBar>
 #include <QToolBar>
+#include<qdebug.h>
 #include "qthelloworld.h"
 
 
@@ -34,8 +35,8 @@ qthelloworld::~qthelloworld()
 void qthelloworld::open()
 {
 	//QMessageBox::information(this, tr("Information"), tr("Open"));
-#if 1
-	//exp:对话框
+#if 0
+	//exp:对话框QMessageBox应用1
 	if (QMessageBox::Yes == QMessageBox::question(this,
 		tr("Question"),
 		tr("Are you OK?"),
@@ -47,6 +48,30 @@ void qthelloworld::open()
 	else 
 	{
 		QMessageBox::information(this, tr("Hmmm..."), tr("I'm sorry!"));
+	}
+#endif
+
+#if 1
+	//exp:对话框QMessageBox应用2
+	QMessageBox msgBox;
+	msgBox.setText(tr("The document has been modified."));
+	msgBox.setInformativeText(tr("Do you want to save your changes?"));
+	msgBox.setDetailedText(tr("Differences here..."));
+	msgBox.setStandardButtons(QMessageBox::Save
+		| QMessageBox::Discard
+		| QMessageBox::Cancel);
+	msgBox.setDefaultButton(QMessageBox::Save);
+	int ret = msgBox.exec();
+	switch (ret) {
+	case QMessageBox::Save:
+		qDebug() << "Save document!";
+		break;
+	case QMessageBox::Discard:
+		qDebug() << "Discard changes!";
+		break;
+	case QMessageBox::Cancel:
+		qDebug() << "Close document!";
+		break;
 	}
 #endif
 
