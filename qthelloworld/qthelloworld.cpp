@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QStatusBar>
 #include <QToolBar>
+#include <QDebug>
 #include "qthelloworld.h"
 
 
@@ -31,17 +32,40 @@ qthelloworld::~qthelloworld()
 {
 }
 
+void qthelloworld::showUserAgeDialog()
+{
+	UserAgeDialog *dialog = new UserAgeDialog(this);
+	connect(dialog, &UserAgeDialog::userAgeChanged, this, &UserAgeDialog::setUserAge);
+	dialog->show();
+}
+
+void qthelloworld::setUserAge(int age)
+{
+	userAge = age;
+}
+
 void qthelloworld::open()
 {
 	//QMessageBox::information(this, tr("Information"), tr("Open"));
-#if 0
+#if 1
 	//QDialog dialog;
 	QDialog dialog(this);
 	dialog.setWindowTitle(tr("Hello, dialog!"));
 	dialog.exec();//模态对话框，会阻塞同一应用程序中其它窗口的输入
+	qDebug() << dialog.result();//对话框关闭，exec()函数返回，此时取得对话框的数据。(为0）
+#if 0
+	if (dialog.exec() == QDialog::Accepted) 
+	{
+		//qDebug() << dialog.result();
+		qDebug() << "accepted";
+	}
+	else {
+		qDebug() << "rejected";
+	}
+#endif
 	//dialog.show();//在栈上建立，show()函数返回，MainWindow::open()函数结束，dialog 超出作用域被析构，因此对话框消失
 #endif
-#if 1
+#if 0
 	QDialog *dialog = new QDialog;
 	dialog->setWindowTitle(tr("Hello, dialog!"));
 	dialog->show();//改为在堆上建立  非模态对话框   没有delete，存在内存泄漏

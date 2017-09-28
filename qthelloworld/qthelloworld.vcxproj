@@ -77,6 +77,7 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_reader.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_UserAgeDialog.cpp" />
     <ClCompile Include="GeneratedFiles\qrc_qthelloworld.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </PrecompiledHeader>
@@ -94,6 +95,7 @@
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="qthelloworld.cpp" />
+    <ClCompile Include="UserAgeDialog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qthelloworld.h">
@@ -121,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_qthelloworld.h" />
+    <CustomBuild Include="UserAgeDialog.h" />
     <CustomBuild Include="newspaper.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing newspaper.h...</Message>
