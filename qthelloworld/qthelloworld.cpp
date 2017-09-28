@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QStatusBar>
 #include <QToolBar>
+#include <QTextEdit>
 #include<qdebug.h>
 #include "qthelloworld.h"
 
@@ -15,15 +16,28 @@ qthelloworld::qthelloworld(QWidget *parent) :
 	openAction = new QAction(QIcon(":/images/test"), tr("&Open..."), this);
 	openAction->setShortcuts(QKeySequence::Open);//快捷键
 	openAction->setStatusTip(tr("Open an existing file"));
-	connect(openAction, &QAction::triggered, this, &qthelloworld::open);
+
+	saveAction = new QAction(QIcon(":/images/file-save"), tr("&Save..."), this);
+	saveAction->setShortcuts(QKeySequence::Save);
+	saveAction->setStatusTip(tr("Save a new file"));
+
+	//connect(openAction, &QAction::triggered, this, &qthelloworld::open);
+
+	connect(openAction, &QAction::triggered, this, &qthelloworld::openFile);
+	connect(saveAction, &QAction::triggered, this, &qthelloworld::saveFile);
 
 	QMenu *file = menuBar()->addMenu(tr("&File"));
 	file->addAction(openAction);
+	file->addAction(saveAction);
 
 	QToolBar *toolBar = addToolBar(tr("&File"));
 	toolBar->addAction(openAction);
+	toolBar->addAction(saveAction);
 	QToolBar *toolBar2 = addToolBar(tr("Tool Bar 2"));//右键点击icon，显示toolbar名称，并可以通过勾选选择显示哪几个toobar
 	toolBar2->addAction(openAction);
+
+	textEdit = new QTextEdit(this);
+	setCentralWidget(textEdit);
 
 	statusBar();
 }
@@ -51,7 +65,7 @@ void qthelloworld::open()
 	}
 #endif
 
-#if 1
+#if 0
 	//exp:对话框QMessageBox应用2
 	QMessageBox msgBox;
 	msgBox.setText(tr("The document has been modified."));
@@ -96,4 +110,57 @@ void qthelloworld::open()
 #endif
 
 
+}
+
+
+void qthelloworld::openFile()
+{
+	QString path = QFileDialog::getOpenFileName(this,
+												tr("Open File"),
+												".",
+												tr("Text Files(*.txt)"));
+	if (!path.isEmpty()) 
+	{
+		QFile file(path);
+		if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) 
+		{
+			QMessageBox::warning(this, tr("Read File"),
+									tr("Cannot open file:\n%1").arg(path));
+			return;
+		}
+		QTextStream in(&file);
+		textEdit->setText(in.readAll());
+		file.close();
+	}
+	else 
+	{
+		QMessageBox::warning(this, tr("Path"),
+							tr("You did not select any file."));
+	}
+}
+
+void qthelloworld::saveFile()
+{
+	QString path = QFileDialog::getSaveFileName(this,
+												tr("Open File"),
+												".",
+												tr("Text Files(*.txt)"));
+	if (!path.isEmpty()) 
+	{
+		QFile file(path);
+		if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) 
+		{
+			QMessageBox::warning(this, tr("Write File"),
+								tr("Cannot open file:\n%1").arg(path));
+			return;
+		}
+		QTextStream out(&file);
+		out << textEdit->toPlainText();
+		file.close();
+	}
+	else 
+	{
+		QMessageBox::warning(this, tr("Path"),
+							tr("You did not select any file."));
+	}
 }
