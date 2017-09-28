@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
 #endif
 
 
-#if 0
+#if 1
 //exp5:主窗口1
 #include <QApplication>
 #include "qthelloworld.h"
@@ -91,7 +91,7 @@ int main(int argc, char* argv[])
 }
 #endif
 
-#if 1
+#if 0
 //exp6:布局管理器
 #include <QApplication>
 #include <QSpinBox>
