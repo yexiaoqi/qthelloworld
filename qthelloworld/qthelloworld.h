@@ -6,7 +6,7 @@
 #include "UserAgeDialog.h"
 
 class qthelloworld : public QMainWindow
-{
+{ 
 	Q_OBJECT
 public:
 	qthelloworld(QWidget *parent = 0);

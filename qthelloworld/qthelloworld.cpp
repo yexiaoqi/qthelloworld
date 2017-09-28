@@ -35,7 +35,7 @@ qthelloworld::~qthelloworld()
 void qthelloworld::showUserAgeDialog()
 {
 	UserAgeDialog *dialog = new UserAgeDialog(this);
-	connect(dialog, &UserAgeDialog::userAgeChanged, this, &UserAgeDialog::setUserAge);
+	connect(dialog, &UserAgeDialog::userAgeChanged, this, &qthelloworld::setUserAge);
 	dialog->show();
 }
 
