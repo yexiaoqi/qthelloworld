@@ -33,5 +33,26 @@ qthelloworld::~qthelloworld()
 
 void qthelloworld::open()
 {
-	QMessageBox::information(this, tr("Information"), tr("Open"));
+	//QMessageBox::information(this, tr("Information"), tr("Open"));
+#if 0
+	//QDialog dialog;
+	QDialog dialog(this);
+	dialog.setWindowTitle(tr("Hello, dialog!"));
+	dialog.exec();//模态对话框，会阻塞同一应用程序中其它窗口的输入
+	//dialog.show();//在栈上建立，show()函数返回，MainWindow::open()函数结束，dialog 超出作用域被析构，因此对话框消失
+#endif
+#if 1
+	QDialog *dialog = new QDialog;
+	dialog->setWindowTitle(tr("Hello, dialog!"));
+	dialog->show();//改为在堆上建立  非模态对话框   没有delete，存在内存泄漏
+#endif
+
+#if 0
+	QDialog *dialog = new QDialog;
+	dialog->setAttribute(Qt::WA_DeleteOnClose);//setAttribute()函数设置对话框关闭时，自动销毁对话框
+	dialog->setWindowTitle(tr("Hello, dialog!"));
+	dialog->show();
+#endif
+
+
 }
