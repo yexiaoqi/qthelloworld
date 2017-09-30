@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
 #endif
 
 
-#if 1
+#if 0
 //exp5:主窗口1
 #include <QApplication>
 #include "qthelloworld.h"
@@ -124,3 +124,18 @@ int main(int argc, char *argv[])
 	return app.exec();
 }
 #endif
+
+//鼠标控制事件（包括移动，点击和松开）
+#include <QApplication>
+#include"EventLabel.h"
+int main(int argc, char *argv[])
+{
+	QApplication a(argc, argv);
+
+	EventLabel *label = new EventLabel;
+	label->setWindowTitle("MouseEvent Demo");
+	label->resize(300, 200);
+	label->show();
+
+	return a.exec();
+}
