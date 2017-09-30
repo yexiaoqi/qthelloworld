@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
 #endif
 
 
-#if 0
+#if 1
 //exp5:Ö÷´°¿Ú1
 #include <QApplication>
 #include "qthelloworld.h"
@@ -143,7 +143,7 @@ int main(int argc, char *argv[])
 }
 #endif
 
-#if 1
+#if 0
 #include <QApplication>
 #include"qthelloworld.h"
 //#include"CustomButton .h"
