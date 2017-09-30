@@ -11,6 +11,8 @@ public:
 protected:
 	void mousePressEvent(QMouseEvent *event)
 	{
+		//event->accept();
+		event->ignore();
 		qDebug() << "CustomButtonEx";
 	}
 	//void mousePressEvent(QMouseEvent *event);

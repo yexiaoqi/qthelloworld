@@ -12,6 +12,7 @@ public:
 protected:
 	void mousePressEvent(QMouseEvent *event)
 	{
+		QWidget::mousePressEvent(event);
 		qDebug() << "CustomWidget";
 	}
 };
