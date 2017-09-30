@@ -1,5 +1,5 @@
-#include"CustomWidget.h"
-bool CustomWidget::event(QEvent *e)
+#include"CustomTextEdit.h"
+bool CustomTextEdit::event(QEvent *e)
 {
 	if (e->type() == QEvent::KeyPress) {
 		QKeyEvent *keyEvent = static_cast<QKeyEvent *>(e);
@@ -8,5 +8,5 @@ bool CustomWidget::event(QEvent *e)
 			return true;
 		}
 	}
-	return QWidget::event(e);
+	return false;
 }

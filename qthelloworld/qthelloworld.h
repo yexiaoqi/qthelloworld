@@ -8,6 +8,7 @@
 #include <qfiledialog.h>
 #include"CustomButtonEx .h"
 #include"CustomWidget.h"
+#include"CustomTextEdit.h"
 
 class qthelloworld : public QMainWindow
 {

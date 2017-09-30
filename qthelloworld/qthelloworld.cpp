@@ -7,7 +7,7 @@
 #include<qdebug.h>
 #include "qthelloworld.h"
 
-#if 0
+#if 1
 qthelloworld::qthelloworld(QWidget *parent) : QMainWindow(parent)
 {
 	CustomWidget *widget = new CustomWidget(this);
@@ -22,7 +22,7 @@ qthelloworld::qthelloworld(QWidget *parent) : QMainWindow(parent)
 }
 #endif
 
-#if 1
+#if 0
 qthelloworld::qthelloworld(QWidget *parent) :
 	QMainWindow(parent)
 {
