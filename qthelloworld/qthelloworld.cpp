@@ -17,7 +17,7 @@ qthelloworld::qthelloworld(QWidget *parent) :
 	openAction->setShortcuts(QKeySequence::Open);//快捷键
 	openAction->setStatusTip(tr("Open an existing file"));
 
-	saveAction = new QAction(QIcon(":/images/file-save"), tr("&Save..."), this);
+	saveAction = new QAction(QIcon(":/images/test2"), tr("&Save..."), this);
 	saveAction->setShortcuts(QKeySequence::Save);
 	saveAction->setStatusTip(tr("Save a new file"));
 
@@ -33,8 +33,10 @@ qthelloworld::qthelloworld(QWidget *parent) :
 	QToolBar *toolBar = addToolBar(tr("&File"));
 	toolBar->addAction(openAction);
 	toolBar->addAction(saveAction);
+#if 0
 	QToolBar *toolBar2 = addToolBar(tr("Tool Bar 2"));//右键点击icon，显示toolbar名称，并可以通过勾选选择显示哪几个toobar
 	toolBar2->addAction(openAction);
+#endif
 
 	textEdit = new QTextEdit(this);
 	setCentralWidget(textEdit);

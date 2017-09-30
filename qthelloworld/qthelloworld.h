@@ -2,6 +2,7 @@
 
 #include <QMainWindow>
 #include <QtWidgets/QWidget>
+#include <QTextEdit>
 #include "ui_qthelloworld.h"
 #include <qfiledialog.h>
 
