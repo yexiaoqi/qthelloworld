@@ -7,6 +7,7 @@
 #include<qdebug.h>
 #include "qthelloworld.h"
 
+#if 0
 qthelloworld::qthelloworld(QWidget *parent) : QMainWindow(parent)
 {
 	CustomWidget *widget = new CustomWidget(this);
@@ -19,7 +20,9 @@ qthelloworld::qthelloworld(QWidget *parent) : QMainWindow(parent)
 	widgetLayout->addWidget(cb);
 	this->setCentralWidget(widget);
 }
-#if 0
+#endif
+
+#if 1
 qthelloworld::qthelloworld(QWidget *parent) :
 	QMainWindow(parent)
 {
@@ -52,6 +55,11 @@ qthelloworld::qthelloworld(QWidget *parent) :
 
 	textEdit = new QTextEdit(this);
 	setCentralWidget(textEdit);
+	connect(textEdit, &QTextEdit::textChanged, [=]() {
+		this->setWindowModified(true);
+	});//在窗口内容发生改变时（通过setWindowModified(true)函数通知），Qt 会自动在标题上面的 [] 位置替换成 * 号
+
+	setWindowTitle("TextPad [*]");
 
 	statusBar();
 }
@@ -176,5 +184,24 @@ void qthelloworld::saveFile()
 	{
 		QMessageBox::warning(this, tr("Path"),
 							tr("You did not select any file."));
+	}
+}
+void qthelloworld::closeEvent(QCloseEvent *event)
+{
+	if (isWindowModified()) {
+		bool exit = QMessageBox::question(this,
+			tr("Quit"),
+			tr("Are you sure to quit this application?"),
+			QMessageBox::Yes | QMessageBox::No,
+			QMessageBox::No) == QMessageBox::Yes;
+		if (exit) {
+			event->accept();
+		}
+		else {
+			event->ignore();
+		}
+	}
+	else {
+		event->accept();
 	}
 }
