@@ -100,6 +100,12 @@
     <ClCompile Include="GeneratedFiles\Release\moc_CustomWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="FilterObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_FilterObject.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qthelloworld.h">
@@ -127,6 +133,9 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="CustomButtonEx .h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="FilterObject.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
