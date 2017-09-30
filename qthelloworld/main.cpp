@@ -134,6 +134,7 @@ int main(int argc, char *argv[])
 
 	EventLabel *label = new EventLabel;
 	label->setWindowTitle("MouseEvent Demo");
+	label->setMouseTracking(true);//加上这一句则不用再开始的时候点击鼠标就可以追踪鼠标
 	label->resize(300, 200);
 	label->show();
 
