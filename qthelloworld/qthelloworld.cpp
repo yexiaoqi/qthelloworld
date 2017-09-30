@@ -24,7 +24,10 @@ qthelloworld::qthelloworld(QWidget *parent) :
 	toolBar->addAction(openAction);
 	QToolBar *toolBar2 = addToolBar(tr("Tool Bar 2"));//右键点击icon，显示toolbar名称，并可以通过勾选选择显示哪几个toobar
 	toolBar2->addAction(openAction);
-
+#if 0
+	textEdit = new QTextEdit(this);
+	setCentralWidget(textEdit);
+#endif
 	statusBar();
 }
 
@@ -41,6 +44,8 @@ void qthelloworld::showUserAgeDialog()
 
 void qthelloworld::setUserAge(int age)
 {
+	textEdit = new QTextEdit(this);
+	setCentralWidget(textEdit);
 	userAge = age;
 }
 

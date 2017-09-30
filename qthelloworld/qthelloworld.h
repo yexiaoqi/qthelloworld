@@ -2,6 +2,7 @@
 
 #include <QMainWindow>
 #include <QtWidgets/QWidget>
+#include<QtextEdit>
 #include "ui_qthelloworld.h"
 #include "UserAgeDialog.h"
 
@@ -18,4 +19,5 @@ private:
 	void setUserAge(int age);
 	int userAge;
 	QAction *openAction;
+	QTextEdit *textEdit;
 };
