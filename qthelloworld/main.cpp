@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
 #endif
 
 
-#if 1
+#if 0
 //exp5:Ö÷´°¿Ú1
 #include <QApplication>
 #include "qthelloworld.h"
@@ -159,3 +159,15 @@ int main(int argc, char *argv[])
 }
 #endif
 
+#include <QApplication>
+//#include "qthelloworld.h"
+#include"Label.h"
+#include"EventFilter.h"
+int main(int argc, char *argv[])
+{
+	QApplication app(argc, argv);
+	Label label;
+	app.installEventFilter(new EventFilter(&label, &label));
+	label.show();
+	return app.exec();
+}

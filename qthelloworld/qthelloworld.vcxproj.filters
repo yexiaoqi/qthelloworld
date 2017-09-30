@@ -134,6 +134,12 @@
     <ClInclude Include="GeneratedFiles\ui_qthelloworld.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EventFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="qthelloworld.rc" />
