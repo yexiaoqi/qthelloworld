@@ -22,7 +22,16 @@ qthelloworld::qthelloworld(QWidget *parent) : QMainWindow(parent)
 }
 #endif
 
-#if 1
+
+qthelloworld::qthelloworld()
+{
+	textEdit = new QTextEdit;
+	setCentralWidget(textEdit);
+
+	textEdit->installEventFilter(this);
+}
+
+#if 0
 qthelloworld::qthelloworld(QWidget *parent) :
 	QMainWindow(parent)
 {
@@ -203,5 +212,23 @@ void qthelloworld::closeEvent(QCloseEvent *event)
 	}
 	else {
 		event->accept();
+	}
+}
+
+bool qthelloworld::eventFilter(QObject *obj, QEvent *event)
+{
+	if (obj == textEdit) {
+		if (event->type() == QEvent::KeyPress) {
+			QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+			qDebug() << "Ate key press" << keyEvent->key();
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	else {
+		// pass the event on to the parent class
+		return QMainWindow::eventFilter(obj, event);
 	}
 }

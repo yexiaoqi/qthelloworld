@@ -13,7 +13,8 @@ class qthelloworld : public QMainWindow
 {
 	Q_OBJECT
 public:
-	qthelloworld(QWidget *parent = 0);
+	qthelloworld();
+	//qthelloworld(QWidget *parent = 0);
 	~qthelloworld();
 	
 	//~qthelloworld();
@@ -22,6 +23,7 @@ protected:
 	{
 		qDebug() << "MainWindow";
 	}
+	bool eventFilter(QObject *obj, QEvent *event);
 private:
 	void open();
 	void openFile();
