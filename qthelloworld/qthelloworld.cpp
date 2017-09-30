@@ -7,7 +7,19 @@
 #include<qdebug.h>
 #include "qthelloworld.h"
 
-
+qthelloworld::qthelloworld(QWidget *parent) : QMainWindow(parent)
+{
+	CustomWidget *widget = new CustomWidget(this);
+	CustomButton *cbex = new CustomButton(widget);
+	cbex->setText(tr("CustomButton"));
+	CustomButtonEx *cb = new CustomButtonEx(widget);
+	cb->setText(tr("CustomButtonEx"));
+	QVBoxLayout *widgetLayout = new QVBoxLayout(widget);
+	widgetLayout->addWidget(cbex);
+	widgetLayout->addWidget(cb);
+	this->setCentralWidget(widget);
+}
+#if 0
 qthelloworld::qthelloworld(QWidget *parent) :
 	QMainWindow(parent)
 {
@@ -43,7 +55,7 @@ qthelloworld::qthelloworld(QWidget *parent) :
 
 	statusBar();
 }
-
+#endif
 qthelloworld::~qthelloworld()
 {
 }

@@ -125,7 +125,8 @@ int main(int argc, char *argv[])
 }
 #endif
 
-//鼠标控制事件（包括移动，点击和松开）
+#if 0
+//exp7:鼠标控制事件（包括移动，点击和松开）
 #include <QApplication>
 #include"EventLabel.h"
 int main(int argc, char *argv[])
@@ -140,3 +141,21 @@ int main(int argc, char *argv[])
 
 	return a.exec();
 }
+#endif
+
+#if 1
+#include <QApplication>
+#include"qthelloworld.h"
+//#include"CustomButton .h"
+int main(int argc, char *argv[])
+{
+	QApplication a(argc, argv);
+
+	CustomButton btn;
+	btn.setText("This is a Button!");
+	btn.show();
+
+	return a.exec();
+}
+#endif
+
